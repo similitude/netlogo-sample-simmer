@@ -13,3 +13,6 @@ RUN mv netlogo-5.1.0 /opt/netlogo
 
 # Copy the API directory across.
 ADD api /api
+
+# Install Python wrapper script dependencies.
+RUN apt-get install -qq python-lxml
