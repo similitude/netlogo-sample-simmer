@@ -11,7 +11,8 @@ COMMAND = '%s/netlogo-headless.sh' % NETLOGO_HOME
 
 def build_clargs(arg_dict):
     """
-    Converts a map of command-line flags and values into a string of command-line inputs.
+    Converts a map of command-line flags and values into a string of
+    command-line inputs.
     """
     items = reduce(lambda xs, (k, v): xs + [k, v], arg_dict.items(), [])
     return [COMMAND] + map(str, filter(lambda x: x not in (None, ''), items))
