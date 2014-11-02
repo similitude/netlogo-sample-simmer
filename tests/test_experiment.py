@@ -22,7 +22,7 @@ def test_altruism():
     Set environment variable CI=true in continuous integration to skip.
     """
     # Do not run system tests for continuous integration.
-    if os.environ.get('CI'):
+    if os.environ.get('CI'): # pragma: no cover
         return
 
     result = NetLogoServiceHandler().altruism(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 100)
