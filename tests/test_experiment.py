@@ -1,8 +1,8 @@
 import re
 from hamcrest.core.assert_that import assert_that
 from hamcrest.core.core.isequal import equal_to
-from netlogo.api.experiment import Experiment
-from netlogo.api.handler import NetLogoServiceHandler
+from api.experiment import Experiment
+from api.handler import NetLogoServiceHandler
 
 
 def test_experiment():

@@ -1,7 +1,6 @@
 # Invokes NetLogo models.
 # See http://ccl.northwestern.edu/netlogo/docs/behaviorspace.html
 import subprocess
-from timeit import default_timer as timer
 from uuid import uuid4
 
 from experiment import Experiment
@@ -10,17 +9,12 @@ NETLOGO_HOME = '/opt/netlogo'
 COMMAND = '%s/netlogo-headless.sh' % NETLOGO_HOME
 
 
-def build_clargs(clargs):
+def build_clargs(arg_dict):
     """
     Converts a map of command-line flags and values into a string of command-line inputs.
     """
-    args = [COMMAND]
-    for key in clargs.keys():
-        args.append(key)
-        # Append non-empty values after the flag.
-        if clargs[key] is not None and str(clargs[key]):
-            args.append(str(clargs[key]))
-    return args
+    items = reduce(lambda xs, (k, v): xs + [k, v], arg_dict.items(), [])
+    return [COMMAND] + map(str, filter(lambda x: x not in (None, ''), items))
 
 
 class NetLogoServiceHandler(object):
@@ -32,14 +26,12 @@ class NetLogoServiceHandler(object):
         """
         Simply calls headless NetLogo with the given command-line arguments.
         """
-        start = timer()
-        result = subprocess.call(build_clargs(clargs))
-        print 'Ran experiment in %.1f sec' % (timer() - start)
-        return result
+        return subprocess.call(build_clargs(clargs))
 
     def call_experiment(self, model, setup_file, name, out_path):
         """
-        Executes the specified experiment, writing the results to out_path in table format.
+        Executes the specified experiment, writing the results to out_path in
+        the BehaviourSpace table format.
         """
         self.call({
             '--model': model,
@@ -48,8 +40,8 @@ class NetLogoServiceHandler(object):
             '--table': out_path
         })
 
-    def altruism(self, altruisticProbability, selfishProbability, altruismCost, altruismBenefit, disease, harshness,
-                 numTicks):
+    def altruism(self, altruisticProbability, selfishProbability, altruismCost,
+                 altruismBenefit, disease, harshness, numTicks):
         """
         Runs an experiment of the Biology/Evolution/Altruism model.
 
@@ -69,8 +61,7 @@ class NetLogoServiceHandler(object):
         }
 
         exp = Experiment(steps=numTicks, params=params)
-        exp.add_metric(color='pink')
-        exp.add_metric(color='green')
+        exp.add_metric(color='pink').add_metric(color='green')
         exp.write_xml(exp_path)
 
         model = '%s/models/Sample Models/Biology/Evolution/Altruism.nlogo' % NETLOGO_HOME
