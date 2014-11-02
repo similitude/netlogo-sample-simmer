@@ -3,6 +3,7 @@ NetLogo Simmer Package
 
 [![Build Status](https://travis-ci.org/similitude/netlogo-sample-simmer.svg?branch=master)](https://travis-ci.org/similitude/netlogo-sample-simmer)
 [![Coverage Status](https://coveralls.io/repos/similitude/netlogo-sample-simmer/badge.png)](https://coveralls.io/r/similitude/netlogo-sample-simmer)
+[![DOI](https://zenodo.org/badge/6943/similitude/netlogo-sample-simmer.png)](http://dx.doi.org/10.5281/zenodo.12527)
 
 A Simmer package for the NetLogo modeling environment.
 
