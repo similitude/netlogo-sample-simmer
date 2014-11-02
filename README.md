@@ -1,6 +1,8 @@
 NetLogo Simmer Package
 ======================
 
+[![Build Status](https://travis-ci.org/similitude/netlogo-sample-simmer.svg?branch=master)](https://travis-ci.org/similitude/netlogo-sample-simmer)
+
 A Simmer package for the NetLogo modeling environment.
 
 > NetLogo is a multi-agent programmable modeling environment. It is used by
