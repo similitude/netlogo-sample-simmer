@@ -48,8 +48,8 @@ class NetLogoServiceHandler(object):
         :returns: The table output of the experiment.
         """
         job = uuid4()
-        exp_path = '/var/computome/%s/experiment.xml' % job
-        out_path = '/var/computome/%s/out.csv' % job
+        exp_path = '/tmp/%s/experiment.xml' % job
+        out_path = '/tmp/%s/out.csv' % job
 
         params = {
             'altruistic-probability': altruisticProbability,

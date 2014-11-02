@@ -1,5 +1,5 @@
-from distutils.dir_util import mkpath
 import os
+from distutils.dir_util import mkpath
 from lxml.etree import parse, SubElement, tostring
 
 # Path to the experiment template XML document.

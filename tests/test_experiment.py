@@ -1,3 +1,4 @@
+import os
 import re
 from hamcrest.core.assert_that import assert_that
 from hamcrest.core.core.isequal import equal_to
@@ -14,5 +15,14 @@ def test_experiment():
 
 
 def test_altruism():
+    """
+    Performs a full system test, invoking a local instance of NetLogo.
+
+    Set environment variable CI=true in continuous integration to skip.
+    """
+    # Do not run system tests for continuous integration.
+    if 'CI' in os.environ and os.environ['CI']:
+        return
+
     result = NetLogoServiceHandler().altruism(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 100)
     assert_that(len(result.splitlines()), equal_to(108))
