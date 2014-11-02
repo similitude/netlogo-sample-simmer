@@ -11,7 +11,8 @@ def test_experiment():
     exp.add_metric(color='foo')
 
     with open('tests/experiment-fixture.xml') as fixture:
-        assert_that(re.sub(r'\s+', '', exp.to_xml()), equal_to(re.sub(r'\s+', '', fixture.read())))
+        assert_that(re.sub(r'\s+', '', exp.to_xml()),
+                    equal_to(re.sub(r'\s+', '', fixture.read())))
 
 
 def test_altruism():
@@ -21,7 +22,7 @@ def test_altruism():
     Set environment variable CI=true in continuous integration to skip.
     """
     # Do not run system tests for continuous integration.
-    if 'CI' in os.environ and os.environ['CI']:
+    if os.environ.get('CI'):
         return
 
     result = NetLogoServiceHandler().altruism(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 100)
