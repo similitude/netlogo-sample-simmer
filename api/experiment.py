@@ -46,9 +46,8 @@ class Experiment(object):
             SubElement(exp_node, 'metric').text = metric
 
         for name, value in self.params.items():
-            param_node = SubElement(exp_node, 'enumeratedValueSet',
-                                    variable=name)
-            SubElement(param_node, 'value', value=str(value))
+            p_node = SubElement(exp_node, 'enumeratedValueSet', variable=name)
+            SubElement(p_node, 'value', value=str(value))
 
         return tree
 

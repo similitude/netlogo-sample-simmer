@@ -1,6 +1,6 @@
 FROM similitude/netlogo-docker
 
-MAINTAINER Oliver Lade <piemaster21@gmail.com>
+MAINTAINER Oliver Lade <oliver@similitude.org>
 # See https://github.com/NetLogo/NetLogo/wiki/Controlling-API
 
 # Install system dependencies.
