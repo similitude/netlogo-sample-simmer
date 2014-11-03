@@ -7,10 +7,7 @@ service NetLogoService {
   /**
    * Invokes NetLogo from the command line.
    */
-  string call(
-    /** The command line arguments. */
-    1:map<string, string> clargs
-  )
+  string call(1:map<string, string> clargs)
 
   /**
    * Runs the evolutionary Altruism simulation.
